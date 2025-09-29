@@ -21,6 +21,9 @@ public class BookingReview extends BaseModel {
     @Column(nullable = false)
     private Double ratings;
 
+    @OneToOne(mappedBy = "review")
+    private Booking booking;
+
     @Override
     public String toString() {
         return "BookingReview{" +

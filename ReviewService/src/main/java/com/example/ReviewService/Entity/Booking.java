@@ -1,18 +1,20 @@
 package com.example.ReviewService.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToOne;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Booking extends BaseModel {
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "review_id")
     private BookingReview review;
     @Enumerated(value = EnumType.STRING)
     private BookingStatus bookingStatus;
