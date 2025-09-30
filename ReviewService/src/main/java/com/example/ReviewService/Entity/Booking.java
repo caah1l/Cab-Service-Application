@@ -16,10 +16,16 @@ public class Booking extends BaseModel {
     @OneToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "review_id")
     private BookingReview review;
+
     @Enumerated(value = EnumType.STRING)
     private BookingStatus bookingStatus;
+    
     private Date startTime;
     private Date endTime;
     private Long totalDistance;
+
+    @ManyToOne
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
 
 }
